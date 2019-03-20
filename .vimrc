@@ -171,15 +171,15 @@ call plug#end()
 " -----------------------------------------------------------------------------
 "  Sources
 " -----------------------------------------------------------------------------
-source ~/.vim/indentation.vim
-source ~/.vim/lines.vim
-source ~/.vim/lint.vim
-source ~/.vim/statusline.vim
-source ~/.vim/complete.vim
-source ~/.vim/snippets.vim
-source ~/.vim/templates.vim
-source ~/.vim/fold.vim
-source ~/.vim/run.vim
+source ~/.dotfiles/vim/indentation.vim
+source ~/.dotfiles/vim/lines.vim
+source ~/.dotfiles/vim/lint.vim
+source ~/.dotfiles/vim/statusline.vim
+source ~/.dotfiles/vim/complete.vim
+source ~/.dotfiles/vim/snippets.vim
+source ~/.dotfiles/vim/templates.vim
+source ~/.dotfiles/vim/fold.vim
+source ~/.dotfiles/vim/run.vim
 " -----------------------------------------------------------------------------
 " Plugin Configuration
 " -----------------------------------------------------------------------------
