@@ -29,7 +29,7 @@ echo
 echo "Symlinking dotfiles..."
 for file in .!(|.); do
     echo "$file --> ~/$file"
-    echo "ln -s -f $file ~/$file"
+    ln -s -f $file ~/$file
 done
 echo
 
@@ -44,9 +44,9 @@ echo "Installing base..."
 
 # Use my templates and scripts
 echo "Installing scripts..."
-# git clone https://github.com/samlehman617/scripts ~/bin
+git clone https://github.com/samlehman617/scripts ~/bin
 echo "Installing templates..."
-# git clone https://github.com/samlehman617/vim-templates ~/templates
+git clone https://github.com/samlehman617/vim-templates ~/.templates
 
 # Make other directories
 echo "Creating home directory structure..."
