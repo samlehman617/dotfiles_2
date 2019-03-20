@@ -1,0 +1,80 @@
+# --- DIRECTORY NAVIGATION ----------------------------------------------------
+alias cd..="cd .."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias l="colorls"
+alias ls="colorls"
+alias la="colorls -a"
+alias ll="colorls -l"
+alias lal="colorls -al"
+	# --- MANAGING DIRS ---------------------------------------------------
+filelink() { ln -sf ${2} ${1} } 
+dirlink() { ln -sfn ${2} ${1} }
+alias rm="trash"
+mcd() { mkdir -p -- "$1"; cd -P -- "$1"; ls }
+alias p="echo $PATH | tr -s ':' '\n'"
+#lnk() { if [ -d "$1" ]; then echo "ln -sfn ${2} ${1}"; else echo "ln -sf ${2} ${1}"; fi }
+	# --- NAMED DIRS ------------------------------------------------------
+alias home="cd ~"
+alias ~="cd ~"
+alias dotfiles="cd ~/dotfiles"
+alias projects="cd ~/projects"
+alias temp="cd ~/temp"
+alias website="cd ~/projects/website"
+alias hass="cd ~/projects/HomeAssistant"
+
+# --- VERSION CONTROL ---------------------------------------------------------
+alias g="git"
+alias gi="git init"
+alias gl="git log"
+alias gs="git status"
+alias ga="git add"
+alias gr="git remove"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gpm="git push origin master"
+alias gpd="git push origin dev"
+alias gpp="git push origin gh-pages"
+alias gb="git branch"
+alias gch="git checkout"
+alias gcl="git clone"
+alias commit="git commit -m"
+clone() { git clone https://github.com/${1}/${2} }
+ignore() { echo "${1}" >> .gitignore }
+
+# --- PACKAGES ----------------------------------------------------------------
+alias install="sudo apt install -y"
+alias pinstall="pip3 install"
+alias ninstall="sudo npm install -g"
+alias ginstall="sudo gem install"
+
+# --- EDITING -----------------------------------------------------------------
+alias v="nvim"
+alias vi="nvim"
+alias vo="nvim"
+alias vum="nvim"
+
+# --- DOTFILES ----------------------------------------------------------------
+alias bashrc="vim ~/dotfiles/bash/bashrc"
+alias zshrc="vim ~/dotfiles/zsh/zshrc"
+alias vimrc="vim ~/dotfiles/vim/vimrc"
+
+# --- TERMINAL --------------------------------------------------------------------
+alias showpc="neofetch"
+alias c="clear"
+alias h="history"
+alias reload="$SHELL"
+
+# --- SSH -------------------------------------------------------------------------
+alias rasp="ssh root@192.168.0.2"
+alias hassio="ssh hassio@samlehman.duckdns.com -p 2222"
+
+# --- ALIASES ---------------------------------------------------------------------
+alias editalias='vim $HOME/dotfiles/alias/alias'
+
+# --- MISC ------------------------------------------------------------------------
+alias hack=cmatrix
+alias svim='vim -u ~/.SpaceVim/vimrc'
+alias sv='vim -u ~/.SpaceVim/vimrc'

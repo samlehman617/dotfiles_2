@@ -34,6 +34,7 @@ user_plugins() {
     zplug "zsh-users/zsh-history-substring-search", defer:3
     zplug "Tarrasch/zsh-autoenv", from:github
     zplug "gretzky/auto-color-ls", from:github
+    zplug "unixorn/warhol.plugin.zsh", from:github
     # zplug "chrisiscool/zsh-256color", from:github
 }
 
@@ -191,9 +192,9 @@ finish() {
     zplug load
 }
 sources() {
-    source ~/dotfiles/alias/alias
-    source ~/dotfiles/alias/functions
-    source ~/dotfiles/env/windows.env
+    source ~/.dotfiles/alias/alias
+    source ~/.dotfiles/alias/functions
+    source ~/.dotfiles/env/windows.env
     export PATH=$PATH:/home/sam/.cargo/bin
 }
 main() {

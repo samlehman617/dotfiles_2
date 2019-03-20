@@ -1,0 +1,82 @@
+ALIASES_FILE_PATH=$HOME/dotfiles/alias/alias
+PACKAGES_GIT=$HOME/dotfiles/packages/package_git.sh
+
+function save-alias() {
+    ALIAS_NAME=`echo "$1" | grep -o ".*="`
+
+    # Deleting dublicate aliases
+    sed -i "/alias $ALIAS_NAME/d" $ALIASES_FILE_PATH
+
+    # Quoting command: my-alias=command -> my-alias="command"
+    QUOTED=`echo "$1"\" | sed "s/$ALIAS_NAME/$ALIAS_NAME\"/g"`
+
+    echo "alias $QUOTED" >> $ALIASES_FILE_PATH
+
+    # Loading aliases
+    source $ALIASES_FILE_PATH
+}
+
+function clone() {
+	local tmp=$(mktemp)
+	local dir=$(pwd)
+
+	# Get git info
+	local git_url=$1
+    local git_dir=$2
+	local git_cmd="git clone $git_url"
+	local git_repo=$(basename $git_url)
+	local git_user="$(basename "${git_url%/${git_repo}}")"
+	
+	local str="/# --- AUTO ---/ r $tmp"
+    if [ "$#" -eq 2 ]; then
+        git clone $git_url $2
+        cd $2
+    else
+	    git clone $git_url $TEMP/$git_repo #>> /dev/null    # Clone repo
+        cd $TEMP/$git_repo #>> /dev/null                    # Move into repo
+    fi
+	divider $git_repo 80 >> $tmp                            # Create divider
+	input-array $tmp "Enter install commands: "             # Read arr input
+	sed -i "$str" $PACKAGES_GIT                      # Add to install script
+	echo "#!/bin/bash" | cat - $tmp | sponge $tmp           # Make script
+	chmod +x $tmp                                           # Allow execute
+	sh $tmp                                                 # Run commands
+	rm $tmp                                                 # Del temp file
+	cd $dir #>> /dev/null                                    # Return to dir
+}
+
+function divider() {
+	local dashes=$(($2-${#1}))
+	echo "\n# --- $(echo $1 | tr a-z A-Z) $(printn '-' $dashes)"
+}
+
+function input-array() {
+	local cmd_count=0
+	# tput sc
+	echo "Submit line: [ENTER]"
+	echo "Quit & Save: [CTRL-D]\n"
+	# tput rc; tput ed; 
+	printf "$2\n0: $ "
+	while read line
+	do
+		echo $line >> $1
+		cmd_count=$((cmd_count+1))
+		cmds=($line "${cmds[@]}")
+		printf "$cmd_count: \$ "
+	done
+	echo -e "\033[3A\r\n\n"
+	echo "Saved to $1.\n"
+	# tput rc
+	# tput ed
+}
+
+function line-after() {
+	sed -e '$1a\' -e $2 $3
+}
+
+function printn() {
+	str=$1
+	num=$2
+	v=$(printf "%-${num}s" "$str")
+	echo "${v// /$str}"
+}

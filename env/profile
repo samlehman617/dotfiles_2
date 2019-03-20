@@ -1,0 +1,28 @@
+# --- WINDOWS -----------------------------------------------------------------
+umask 022
+export DISPLAY=:0
+
+# --- BASIC INFO --------------------------------------------------------------
+export NAME="Sam Lehman"
+export FIRSTNAME="Sam"
+export LASTNAME="Lehman"
+export EMAIL="samlehman617@gmail.com"
+export WEBSITE="https://samlehman617.github.io"
+export GITHUB="https://github.com/samlehman617"
+
+# --- DIRECTORIES -------------------------------------------------------------
+export DOTFILES=$HOME/dotfiles
+export TEMPLATES=$HOME/templates
+export TEMP=$HOME/temp
+export PROJECTS=$HOME/projects
+export WEBSITE=$PROJECTS/website
+	# --- WINDOWS ---------------------------------------------------------
+export WIN=/mnt/c
+export WINUSER=$WIN/Users/samle
+export DOWNLOADS=$WINUSER/Downloads
+export DOCUMENTS=$WINUSER/Documents
+export MUSIC=$WINUSER/Music
+export PICS=$WINUSER/Pictures
+export VIDS=$WINUSER/Videos
+export BOOKS=$WINUSER/Books
+
