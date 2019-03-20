@@ -4,10 +4,12 @@
 [core]
 	editor = vim
 	excludesfile = /home/sam/.gitignore_global
-	autocrlf = true
+	autocrlf = false
 [commit]
 	template = 
 [merge]
 	tool = fugitive
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[credential]
+	helper = cache --timeout 14400
