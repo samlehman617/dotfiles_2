@@ -7,52 +7,52 @@ echo
 echo "Welcome to Sam Lehman's dotfiles!"
 echo
 
+# Detect OS type
+echo "Getting environment..."
+if [ "$OSTYPE" = "linux-gnu" ]; then
+    if uname -r | grep Microsoft; then osname="WSL"
+    else osname="Generic Linux"; fi
+elif [ "$OSTYPE" = "linux-musleabihf" ]; then osname="Hassio"
+elif [ "$OSTYPE" = "darwin" ]; then osname="MacOS"
+else osname=$OSTYPE
+fi
+echo
+echo "$osname environment detected."
+echo
+
 # Get root
 read -s -p "[sudo] Enter password for $USER: " sudoPW
 echo
 echo
-echo $sudoPW | sudo apt-get update > /dev/null
-
-./script/base_install.sh
-
-# Detect OS type
-if [ "$OSTYPE" = "linux-gnu" ]; then
-    if uname -r | grep Microsoft; then
-        echo "Windows Subsystem for Linux environment detected."
-        ./script/windows_install.sh
-    else
-        echo "Generic Linux system detected."
-        ./script/linux_install.sh
-    fi
-elif [ "$OSTYPE" = "linux-musleabihf" ]; then
-    echo "Hassio system detected."
-    ./script/raspi_install.sh
-elif [ "$OSTYPE" = "darwin" ]; then
-    echo "MacOS system detected."
-    ./script/macos_install.sh
-elif [ "$OSTYPE" = "cygwin" ]; then
-    echo "Cygwin environment detected."
-    # POSIX compatibility layer and Linux environment emulation for Windows
-elif [ "$OSTYPE" = "msys" ]; then
-    echo "Msys environment detected."
-    # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-elif [ "$OSTYPE" = "win32" ]; then
-    echo "Windows (MinGW) system detected."
-    # I'm not sure this can happen.
-elif [ "$OSTYPE" = "freebsd" ]; then
-    echo "FreeBSD system detected."
-    # ...
-else
-    # Unknown.
-    echo "Could not determine system environment."
-    exit 1
-fi
-echo
 
 # Symlink Dotfiles
+echo "Symlinking dotfiles..."
 for file in .!(|.); do
-    echo "$file"
-    # echo "ln -s -f $file ~/$file"
+    echo "$file --> ~/$file"
+    echo "ln -s -f $file ~/$file"
 done
+echo
 
+# Update software sources
+echo "Updating software sources..."
+echo $sudoPW | sudo apt-get update > /dev/null
+echo
+
+# Install common software
+echo "Installing base..."
+./script/base_install.sh
+
+# Use my templates and scripts
+echo "Installing scripts..."
+# git clone https://github.com/samlehman617/scripts ~/bin
+echo "Installing templates..."
+# git clone https://github.com/samlehman617/vim-templates ~/templates
+
+# Make other directories
+echo "Creating home directory structure..."
+mkdir -p ~/projects
+mkdir -p ~/tmp
+
+echo
+echo "Done."
 exit 0
