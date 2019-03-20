@@ -77,7 +77,7 @@ nnoremap P P=`]<C-o>
 autocmd VimResized * wincmd =
 
 " --- Theme/Styling ----------------------------------------------------------
-source ~/.vim/ui.vim
+source ~/.dotfiles/vim/ui.vim
 
 " --- Mouse ------------------------------------------------------------------
 set mouse=a                        " set mouse=nvic
