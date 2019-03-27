@@ -6,10 +6,18 @@
 	excludesfile = /home/sam/.gitignore_global
 	autocrlf = false
 [commit]
-	template = 
+	template =
 [merge]
 	tool = fugitive
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [credential]
 	helper = cache --timeout 14400
+[alias]
+    co = checkout
+    cm = commit
+    p = push
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+    st = status
