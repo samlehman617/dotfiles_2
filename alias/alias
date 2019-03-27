@@ -59,7 +59,9 @@ function ignore() { echo "${1}" >> .gitignore }
 # --- PACKAGES ----------------------------------------------------------------
 alias install="sudo apt install -yg"
 alias pinstall="pip3 install"
-alias ninstall="sudo npm install -g"
+alias p2install="pip2 install"
+alias nginstall="sudo npm install -g"
+alias ninstall="npm install"
 alias ginstall="sudo gem install"
 # --- EDITING -----------------------------------------------------------------
 alias v="nvim"
@@ -86,6 +88,7 @@ alias editalias='vim $HOME/.dotfiles/alias/alias'
 alias newalias='echo $1 ~/.dotfiles/alias/alias'
 # --- PROJECTS --------------------------------------------------------------------
 alias cra="create-react-app"
+alias cook="cookiecutter"
 function newproject() {
     cd ~/projects
     create-react-app $1
@@ -95,3 +98,7 @@ function newproject() {
 alias hack=cmatrix
 alias svim='vim -u ~/.SpaceVim/vimrc'
 alias sv='vim -u ~/.SpaceVim/vimrc'
+
+# TODO: Google Assistant query
+# TODO: Google Search
+# TODO: Next calendar event
