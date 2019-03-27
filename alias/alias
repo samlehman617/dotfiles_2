@@ -9,71 +9,88 @@ alias ls="colorls"
 alias la="colorls -a"
 alias ll="colorls -l"
 alias lal="colorls -al"
-	# --- MANAGING DIRS ---------------------------------------------------
-filelink() { ln -sf ${2} ${1} } 
+alias lt="colorls --tree"
+alias lst="colorls --tree"
+alias lat="colorls -a --tree"
+alias tree="colorls --tree"
+# --- DIR MANAGEMENT -------------------------------------------------
+filelink() { ln -sf ${2} ${1} }
 dirlink() { ln -sfn ${2} ${1} }
 alias rm="trash"
 mcd() { mkdir -p -- "$1"; cd -P -- "$1"; ls }
 alias p="echo $PATH | tr -s ':' '\n'"
 #lnk() { if [ -d "$1" ]; then echo "ln -sfn ${2} ${1}"; else echo "ln -sf ${2} ${1}"; fi }
-	# --- NAMED DIRS ------------------------------------------------------
+# --- DIRS ------------------------------------------------------
 alias home="cd ~"
 alias ~="cd ~"
-alias dotfiles="cd ~/dotfiles"
+alias dotfiles="cd ~/.dotfiles"
+alias template="v ~/templates/$1"
+alias script="v ~/scripts/$1"
 alias projects="cd ~/projects"
+alias proj="cd ~/projects"
 alias temp="cd ~/temp"
-alias website="cd ~/projects/website"
+alias website="cd ~/projects/react-website"
 alias hass="cd ~/projects/HomeAssistant"
-
 # --- VERSION CONTROL ---------------------------------------------------------
 alias g="git"
 alias gi="git init"
+alias ginit="git init"
 alias gl="git log"
+alias glog="git log"
 alias gs="git status"
+alias gstat="git status"
 alias ga="git add"
+alias gadd="git add"
 alias gr="git remove"
 alias gaa="git add ."
 alias gc="git commit -m"
+alias gcommit="git commit -m"
 alias gpm="git push origin master"
 alias gpd="git push origin dev"
 alias gpp="git push origin gh-pages"
 alias gb="git branch"
 alias gch="git checkout"
 alias gcl="git clone"
+alias gclone="git clone"
+alias clone="git clone"
 alias commit="git commit -m"
-clone() { git clone https://github.com/${1}/${2} }
-ignore() { echo "${1}" >> .gitignore }
-
+function clone() { git clone https://github.com/${1}/${2} }
+function ignore() { echo "${1}" >> .gitignore }
 # --- PACKAGES ----------------------------------------------------------------
-alias install="sudo apt install -y"
+alias install="sudo apt install -yg"
 alias pinstall="pip3 install"
 alias ninstall="sudo npm install -g"
 alias ginstall="sudo gem install"
-
 # --- EDITING -----------------------------------------------------------------
 alias v="nvim"
 alias vi="nvim"
 alias vo="nvim"
 alias vum="nvim"
-
 # --- DOTFILES ----------------------------------------------------------------
-alias bashrc="vim ~/dotfiles/bash/bashrc"
-alias zshrc="vim ~/dotfiles/zsh/zshrc"
-alias vimrc="vim ~/dotfiles/vim/vimrc"
-
+alias bashrc="vim ~/.dotfiles/.bashrc"
+alias zshrc="vim ~/.dotfiles/.zshrc"
+alias vimrc="vim ~/.dotfiles/.vimrc"
 # --- TERMINAL --------------------------------------------------------------------
 alias showpc="neofetch"
 alias c="clear"
 alias h="history"
 alias reload="$SHELL"
-
+# --- ALIASES ---------------------------------------------------------------------
+alias grep="rg"
 # --- SSH -------------------------------------------------------------------------
 alias rasp="ssh root@192.168.0.2"
 alias hassio="ssh hassio@samlehman.duckdns.com -p 2222"
-
+alias rpi="ssh pi@192.168.0.2"
 # --- ALIASES ---------------------------------------------------------------------
-alias editalias='vim $HOME/dotfiles/alias/alias'
-
+alias editalias='vim $HOME/.dotfiles/alias/alias'
+alias newalias='echo $1 ~/.dotfiles/alias/alias'
+# --- PROJECTS --------------------------------------------------------------------
+alias cra="create-react-app"
+function newproject() {
+    cd ~/projects
+    create-react-app $1
+    cd $1
+}
 # --- MISC ------------------------------------------------------------------------
 alias hack=cmatrix
 alias svim='vim -u ~/.SpaceVim/vimrc'
