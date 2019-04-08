@@ -1,9 +1,3 @@
-" Line Numbers
-set number                " Show the line numbers on the left side.
-set ruler                 " Show the line and column numbers of the cursor.
-set cursorline            " Highlight line cursor is on
-set cursorcolumn          " Highlight column cursor is on
-set numberwidth=3         " Set width of line number column
 set foldcolumn=2          " Add column for folds
 
 if exists('&signcolumn')

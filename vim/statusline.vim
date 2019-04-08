@@ -21,7 +21,8 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
-let g:airline_theme='base16_spacemacs_mod'
+let g:airline_theme='lehmanator_theme'
+" let g:airline_theme='base16_spacemacs_mod'
 let g:airline_powerline_fonts=1                           " Use powerline fonts
 let g:airline_focuslost_inactive = 1                      " Hide airline when focus lost
 let g:airline_inactive_collapse=1                         " Collapse airline for inactive windows

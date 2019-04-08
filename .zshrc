@@ -20,7 +20,7 @@ user_plugins() {
     # zplug "plugins/cp", from:oh-my-zsh
     # zplug "plugins/extract", from:oh-my-zsh
     # zplug "plugins/node", from:oh-my-zsh
-    # zplug "plugins/npm", from:oh-my-zsh
+    zplug "plugins/npm", from:oh-my-zsh
     # zplug "plugins/python", from:oh-my-zsh
     # zplug "plugins/autoenv", from:oh-my-zsh
 
