@@ -31,6 +31,8 @@ let g:javascript_conceal_prototype            = "¶"
 let g:javascript_conceal_static               = "•"
 
 let g:pymode_python = 'python3'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Toggle concealing characters
 map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>

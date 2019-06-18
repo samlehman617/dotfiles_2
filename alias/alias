@@ -4,15 +4,16 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias l="colorls"
-alias ls="colorls"
-alias la="colorls -a"
-alias ll="colorls -l"
-alias lal="colorls -al"
-alias lt="colorls --tree"
-alias lst="colorls --tree"
-alias lat="colorls -a --tree"
-alias tree="colorls --tree"
+alias l="lsd"
+alias ls="lsd"
+alias la="lsd -a"
+alias ll="lsd -l"
+alias lal="lsd -al"
+alias lla="lsd -al"
+alias lt="lsd --tree"
+alias lst="lsd --tree"
+alias lat="lsd -a --tree"
+alias tree="lsd --tree"
 # --- DIR MANAGEMENT -------------------------------------------------
 filelink() { ln -sf ${2} ${1} }
 dirlink() { ln -sfn ${2} ${1} }
@@ -96,6 +97,8 @@ function newproject() {
 }
 # --- MISC ------------------------------------------------------------------------
 alias hack=cmatrix
+alias tb="nc termbin.com 9999"         # Terminal PasteBin
+alias compress='pngquant'              # Compress images
 alias svim='vim -u ~/.SpaceVim/vimrc'
 alias sv='vim -u ~/.SpaceVim/vimrc'
 
